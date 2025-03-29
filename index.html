@@ -176,6 +176,17 @@ input[type="number"] {
             transition: color 0.3s ease;
         }
 
+        #message {
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 600;
+        text-align: center;
+        transition: all 0.3s ease;
+        color: var(--message-text);
+    }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 1rem;
@@ -227,6 +238,7 @@ input[type="number"] {
 
             <!-- Result Display -->
             <div id="result"></div>
+            <div id="message"></div>
         </div>
     </div>
 
@@ -255,6 +267,7 @@ input[type="number"] {
         // BMI Calculation Logic
         function calculateBMI() {
             let weight, heightM;
+            const messageDiv = document.getElementById('message');
             
             if (unitToggle.checked) { // Imperial
                 weight = parseFloat(document.getElementById('weightLbs').value) * 0.453592;
@@ -272,14 +285,41 @@ input[type="number"] {
                 resultDiv.textContent = `Your BMI: ${bmi.toFixed(1)}`;
                 resultDiv.style.color = getBMIColor(bmi);
             }
+            
+             if (weight && heightM) {
+            const bmi = weight / (heightM ** 2);
+            resultDiv.textContent = `Your BMI: ${bmi.toFixed(1)}`;
+            const bgColor = getBMIColor(bmi);
+            resultDiv.style.color = bgColor;
+            messageDiv.textContent = getMessage(bmi);
+            messageDiv.style.backgroundColor = bgColor;
+        }
         }
 
         // Color Coding Function
-        function getBMIColor(bmi) {
-            if (bmi < 18.5) return 'var(--accent1)';
-            if (bmi < 25) return 'var(--success)';
-            if (bmi < 30) return 'var(--accent2)';
-            return 'var(--secondary)';
+       // Color Coding and Messaging Function
+    function getBMIColor(bmi) {
+        if (bmi < 18.5) {
+            document.documentElement.style.setProperty('--message-text', '#2E4057'); 
+            return 'var(--accent1)';
+        }
+        if (bmi < 25) {
+            document.documentElement.style.setProperty('--message-text', '#ffffff');
+            return 'var(--success)';
+        }
+        if (bmi < 30) {
+            document.documentElement.style.setProperty('--message-text', '#2E4057');
+            return 'var(--accent2)';
+        }
+        document.documentElement.style.setProperty('--message-text', '#ffffff');
+        return 'var(--secondary)';
+    }
+
+    function getMessage(bmi) {
+        if (bmi < 18.5) return "Nourish your body! Focus on nutrient-rich foods 🥗";
+        if (bmi < 25) return "Great balance! Keep up the healthy habits 💪";
+        if (bmi < 30) return "You're strong! Small changes make big differences 🔥";
+        return "Your health matters! Let's build sustainable habits 🌱";
         }
 
         // Event Listeners
