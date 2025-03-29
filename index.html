@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        /* CSS Styling */
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .calculator { background: #f5f7fa; padding: 20px; border-radius: 10px; }
+        input { padding: 10px; margin: 10px 0; width: 100%; }
+        #result { font-size: 24px; font-weight: bold; text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>BMI Calculator for Everyone</h1>
+    <div class="calculator">
+        <input type="number" id="weight" placeholder="Weight (kg)">
+        <input type="number" id="height" placeholder="Height (cm)">
+        <div id="result"></div>
+    </div>
+
+    <!-- Ad placeholder (paste AdSense/Mediavine code here) -->
+    <div class="ad">
+        <!-- Example: Google AdSense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXX" crossorigin="anonymous"></script>
+    </div>
+
+    <script>
+        // Real-time BMI calculation
+        const weightInput = document.getElementById('weight');
+        const heightInput = document.getElementById('height');
+        const resultDiv = document.getElementById('result');
+
+        function calculateBMI() {
+            const weight = parseFloat(weightInput.value);
+            const height = parseFloat(heightInput.value) / 100; // Convert cm to meters
+            if (weight && height) {
+                const bmi = weight / (height * height);
+                resultDiv.textContent = `BMI: ${bmi.toFixed(1)}`;
+            }
+        }
+
+        weightInput.addEventListener('input', calculateBMI);
+        heightInput.addEventListener('input', calculateBMI);
+    </script>
+</body>
+</html>
