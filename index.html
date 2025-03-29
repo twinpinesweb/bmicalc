@@ -233,10 +233,10 @@ input[type="number"] {
         transition: left 0.3s ease;
     }
 
-    .scale-range.underweight { background: var(--accent1); }
-    .scale-range.normal { background: var(--success); }
-    .scale-range.overweight { background: var(--accent2); }
-    .scale-range.obese { background: var(--secondary); }
+    .underweight { width: 46.25%; background: var(--accent1); }  /* 0-18.5 (46.25% of 40) */
+    .normal { width: 16%; background: var(--success); }          /* 18.5-24.9 (16% of 40) */
+    .overweight { width: 12.5%; background: var(--accent2); }    /* 25-29.9 (12.5% of 40) */
+    .obese { width: 25%; background: var(--secondary); }         /* 30+ (25% of 40) */
 </style>
 </head>
 <body>
