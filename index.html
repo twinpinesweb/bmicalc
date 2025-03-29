@@ -187,6 +187,35 @@ input[type="number"] {
         color: var(--message-text);
     }
 
+        .share-section {
+        margin-top: 1.5rem;
+        text-align: center;
+        display: none;
+    }
+
+    .share-button {
+        background: none;
+        border: 2px solid var(--primary);
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        margin: 0 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .share-button:hover {
+        background: var(--primary);
+        color: white;
+    }
+
+    .share-button img {
+        height: 20px;
+        width: 20px;
+    }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 1rem;
@@ -239,6 +268,16 @@ input[type="number"] {
             <!-- Result Display -->
             <div id="result"></div>
             <div id="message"></div>
+            <div class="share-section" id="shareSection">
+    <button class="share-button" id="shareX">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAvUlEQVR4nO2UMQ7CMAxFX4rEwMDAxJX6/39FQkKCAyBxBE7QWLFlJw2lqhgsv6T5ie3YdgD+YsXAGXCB1sDcA0yAs3p+3gLMA7D9k0mJpQfWq4GkQO0BZgG4tABz4Kk+7zYBSYHCA8wDsNwE7CoQq5pL1VwBZtU3q4CkQOkB5gFYbAISb9X8rB5wVg84qwec1QPO6gFn9YCzesBZPeCsHnBWDzirB5zVA/6H8gB0Hx7kAfgCk4JkXxYbWNUAAAAASUVORK5CYII=" alt="X icon">
+    X
+</button>
+    <button class="share-button" id="shareFacebook">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAACFUlEQVR4nO2UTUhUURTHT4pIqyKopEWrIAjCICgQwmiRRC1qUYuKICgIqkWLFkEEQRBE0KJoYdAiCIIgCCIIWgRBELRoUYsgCIJoUYsgaFG0iD7O5f3hzdPRN3NGaXHBj3fPuef8z5l5c+8D/rNqgSmgBLwFhoH9OeM3A5eBl8A34APwGHgKfM2eHwDrcuZaC3RlwFJQHXBEjF0HjIpnY8B2oBHYBdwTfZ1m8GpgJAN9Bw6q/hZgWvQfF8+PAF9E3zHTBk3Al4x0Q/UPiL5e0bcVmBP9u0wbHBagblW/CJSAjap+WNRPqHpF9V7V3yHqN1S9VdQfq3qDqL9Q9XpRn1L1OlH/ouo1oj6v6hWivqDqZaK+qOolor6k6iWivqzqRaK+oupFor6q6kWi7lW9SNTXVL1I1D2qXiTqXlUvEvV1VS8S9Q1VLxL1TVUvEvUtVS8S9W1VLxL1HVUvEvVdVS8S9T1VLxL1fVUvEvUDVS8S9UNVLxL1I1UvEvVjVS8S9RNVLxL1U1UvEvUzVS8S9XNVLxL1C1UvEvVLVS8S9StVLxL1a1UvEvUbVS8S9VtVLxL1O1UvEvV7VS8S9QdVLxL1R1UvEvUnVS8S9WdVLxL1F1UvEvVXVS8S9TdVLxL1d1UvEvUPVS8S9U9VLxL1L1UvEvVvVS8S9R9VLxL1sqoXifqvqheJuk/Vi0Tdr+pFoh5Q9SJRD6p6kagHVb1I1EOqXiTqYVUvEvWIqheJelTVi0Q9pupFoh5X9SJRT6h6kagnVb1I1FOqXiTqaVUvEvWMqheJelbVi0Q9p+pFop5X9SJR/1X1IlH3q3qRqAdUvUjUg6peJOpBVS8S9ZCqF4l6WNWLRD2i6kWiHlX1IlGPqXqRqMdVvUjUE6peJOpJVS8S9ZSqF4l6WtWLHPAXeQ2S4s/4sV0AAAAASUVORK5CYII=" alt="Facebook icon">
+        Facebook
+    </button>
+</div>
         </div>
     </div>
 
@@ -268,6 +307,7 @@ input[type="number"] {
         function calculateBMI() {
             let weight, heightM;
             const messageDiv = document.getElementById('message');
+            const shareSection = document.getElementById('shareSection');
             
             if (unitToggle.checked) { // Imperial
                 weight = parseFloat(document.getElementById('weightLbs').value) * 0.453592;
@@ -293,10 +333,14 @@ input[type="number"] {
             resultDiv.style.color = bgColor;
             messageDiv.textContent = getMessage(bmi);
             messageDiv.style.backgroundColor = bgColor;
+            shareSection.style.display = 'block';
+            setupShareButtons(bmi);
+        } else {
+            shareSection.style.display = 'none';
         }
         }
 
-        // Color Coding Function
+
        // Color Coding and Messaging Function
     function getBMIColor(bmi) {
         if (bmi < 18.5) {
@@ -316,15 +360,40 @@ input[type="number"] {
     }
 
     function getMessage(bmi) {
-        if (bmi < 18.5) return "Nourish your body, strength will follow! 🥑💪";
-        if (bmi < 25) return "Keep thriving —health is more than a number! 🌿😊";
-        if (bmi < 30) return "Small steps, big progress —keep moving forward! 🏃‍♀️🍏";
-        return "You are capable —start today, one step! ❤️💪";
+        if (bmi < 18.5) return "Nourish your body, strength will follow 🥑💪";
+        if (bmi < 25) return "Keep thriving —health is more than a number 🌿😊";
+        if (bmi < 30) return "Small steps, big progress —keep moving forward 🏃‍♀️🍏";
+        return "Your health matters! Start sustainable habits today 🌱💛";
         }
 
+        // Social Share Function
+    function setupShareButtons(bmi) {
+        const shareText = `My BMI is ${bmi.toFixed(1)} - Let's focus on health together! 🌱`;
+        const encodedText = encodeURIComponent(shareText);
+        const currentUrl = encodeURIComponent(window.location.href);
+
+        // X Share
+        document.getElementById('shareX').onclick = () => {
+            window.open(
+                `https://x.com/intent/tweet?text=${encodedText}&url=${currentUrl}&hashtags=BMI,HealthAwareness`,
+                '_blank',
+                'width=600,height=400'
+            );
+        };
+
+        // Facebook Share
+        document.getElementById('shareFacebook').onclick = () => {
+            window.open(
+                `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}&quote=${encodedText}`,
+                '_blank',
+                'width=600,height=400'
+            );
+        };
+    }
         // Event Listeners
         const inputs = document.querySelectorAll('input[type="number"]');
         inputs.forEach(input => input.addEventListener('input', calculateBMI));
     </script>
+    
 </body>
 </html>
