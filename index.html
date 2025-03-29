@@ -3,46 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator</title>
+    <title>BMI Calculator for Everyone | Check Your Body Mass Index</title>
+    <meta name="description" content="Calculate your BMI instantly with our free tool. Understand your results with interactive charts and expert health advice.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Open+Sans&family=Space+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "BMI Calculator",
+        "url": "https://bmicalculator.ca",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://bmicalculator.ca/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
     <style>
-        /* CSS Styling */
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
-        .calculator { background: #f5f7fa; padding: 20px; border-radius: 10px; }
-        input { padding: 10px; margin: 10px 0; width: 100%; }
-        #result { font-size: 24px; font-weight: bold; text-align: center; margin-top: 20px; }
+        :root {
+            --primary: #6C9BCF;
+            --secondary: #FF7F5D;
+            --accent1: #A8DACC;
+            --accent2: #FFD166;
+            --background: #F8F9FD;
+            --text: #2E4057;
+            --text-light: #6B7C93;
+            --success: #7BC67B;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(160deg, var(--background) 0%, #E6E9F4 100%);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(108, 155, 207, 0.1);
+            margin: 2rem 0;
+        }
+
+        h1, h2 {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text);
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        input {
+            padding: 1rem;
+            border: 2px solid var(--accent1);
+            border-radius: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+        }
+
+        #result {
+            padding: 1.5rem;
+            background: var(--background);
+            border-radius: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 1rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: var(--accent1);
+            color: var(--text);
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            display: none;
+        }
+
+        .ad-container {
+            margin: 2rem 0;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .calculator-card {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>BMI Calculator for Everyone</h1>
-    <div class="calculator">
-        <input type="number" id="weight" placeholder="Weight (kg)">
-        <input type="number" id="height" placeholder="Height (cm)">
-        <div id="result"></div>
+    <div class="container">
+        <div class="calculator-card">
+            <h1>BMI Calculator</h1>
+            <div class="input-group">
+                <input type="number" id="weight" placeholder="Weight (kg)">
+                <input type="number" id="height" placeholder="Height (cm)">
+            </div>
+            <div id="result"></div>
+            <canvas id="bmiChart"></canvas>
+        </div>
+
+        <!-- How-to Section -->
+        <section class="calculator-card">
+            <h2>How to Calculate BMI</h2>
+            <div class="how-to-steps">
+                <p>1. Enter your weight in kilograms</p>
+                <p>2. Enter your height in centimeters</p>
+                <p>3. See your BMI result instantly</p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="calculator-card">
+            <h2>BMI FAQs</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">What is a healthy BMI range?</div>
+                    <div class="faq-answer">A healthy BMI ranges from 18.5 to 24.9...</div>
+                </div>
+                <!-- Add more FAQ items -->
+            </div>
+        </section>
+
+        <!-- Ad Container -->
+        <div class="ad-container">
+            <!-- Paste Google AdSense/Mediavine code here -->
+        </div>
     </div>
 
-    <!-- Ad placeholder (paste AdSense/Mediavine code here) -->
-    <div class="ad">
-        <!-- Example: Google AdSense -->
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXX" crossorigin="anonymous"></script>
-    </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Real-time BMI calculation
-        const weightInput = document.getElementById('weight');
-        const heightInput = document.getElementById('height');
+        // BMI Calculator
+        const inputs = document.querySelectorAll('input');
         const resultDiv = document.getElementById('result');
+        let chart = null;
 
         function calculateBMI() {
-            const weight = parseFloat(weightInput.value);
-            const height = parseFloat(heightInput.value) / 100; // Convert cm to meters
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value) / 100;
+            
             if (weight && height) {
                 const bmi = weight / (height * height);
                 resultDiv.textContent = `BMI: ${bmi.toFixed(1)}`;
+                resultDiv.style.color = getBMIColor(bmi);
+                updateChart(bmi);
             }
         }
 
-        weightInput.addEventListener('input', calculateBMI);
-        heightInput.addEventListener('input', calculateBMI);
+        function getBMIColor(bmi) {
+            if (bmi < 18.5) return 'var(--accent1)';
+            if (bmi < 25) return 'var(--success)';
+            if (bmi < 30) return 'var(--accent2)';
+            return 'var(--secondary)';
+        }
+
+        // Chart Initialization
+        function initChart() {
+            const ctx = document.getElementById('bmiChart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Underweight', 'Normal', 'Overweight', 'Obese'],
+                    datasets: [{
+                        data: [18.4, 24.9, 29.9, 40],
+                        backgroundColor: [
+                            'var(--accent1)',
+                            'var(--success)',
+                            'var(--accent2)',
+                            'var(--secondary)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { enabled: false }
+                    },
+                    scales: {
+                        y: { display: false },
+                        x: { ticks: { color: 'var(--text)' } }
+                    }
+                }
+            });
+        }
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // Initialize
+        inputs.forEach(input => input.addEventListener('input', calculateBMI));
+        window.addEventListener('DOMContentLoaded', initChart);
+
+        // Schema Markup
+        const faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is a healthy BMI range?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A healthy BMI ranges from 18.5 to 24.9..."
+                    }
+                }
+                // Add more questions
+            ]
+        };
+
+        const schemaScript = document.createElement('script');
+        schemaScript.type = 'application/ld+json';
+        schemaScript.textContent = JSON.stringify(faqSchema);
+        document.head.appendChild(schemaScript);
     </script>
 </body>
 </html>
