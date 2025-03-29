@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI Calculator | Check Your Body Mass Index</title>
-    <meta name="description" content="Calculate your Body Mass Index (BMI) using both metric and imperial measurements. Understand your results with interactive charts and expert health advice.">
+    <meta name="description" content="Calculate your Body Mass Index (BMI) using imperial or metric measurements. Understand your weight status with instant results.">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Open+Sans&family=Space+Mono&display=swap" rel="stylesheet">
@@ -13,27 +13,28 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "BMI Calculator",
-        "url": "https://bmicalculator.ca",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://bmicalculator.ca/?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "What is a healthy BMI range?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A healthy BMI ranges from 18.5 to 24.9. However, BMI has limitations and should be interpreted alongside other health indicators."
+            }
+        }]
     }
     </script>
 
     <style>
         :root {
-            --primary: #2E4057;  /* Darkened for better contrast */
-            --secondary: #FF7F5D;
-            --accent1: #A8DACC;
-            --accent2: #FFD166;
-            --background: #F8F9FD;
-            --text: #2E4057;
-            --text-light: #6B7C93;
-            --success: #7BC67B;
+            --primary: #2E4057;    /* Dark blue */
+            --secondary: #FF7F5D;  /* Coral */
+            --accent1: #A8DACC;    /* Mint green */
+            --accent2: #FFD166;    /* Yellow */
+            --background: #F8F9FD; /* Light lavender */
+            --text: #2E4057;       /* Dark text */
+            --text-light: #6B7C93; /* Gray text */
+            --success: #7BC67B;    /* Green */
         }
 
         body {
@@ -43,6 +44,7 @@
             line-height: 1.6;
             margin: 0;
             padding: 20px;
+            min-height: 100vh;
         }
 
         .container {
@@ -58,37 +60,78 @@
             margin: 2rem 0;
         }
 
-        h1, h2 {
+        h1 {
             font-family: 'Nunito', sans-serif;
             color: var(--primary);
-            margin: 0 0 0.5rem 0;  /* Tighter spacing */
-            line-height: 1.2;       /* Reduced line height */
+            margin: 0 0 0.5rem 0;
+            line-height: 1.2;
+            font-size: 2.5rem;
         }
 
         .tagline {
             color: var(--text-light);
             margin-bottom: 2rem;
             font-size: 1.1rem;
+            line-height: 1.5;
         }
 
-        .unit-toggle {
+        /* Modern Toggle Switch */
+        .toggle-container {
             display: flex;
+            align-items: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .unit-btn {
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--accent1);
-            border-radius: 8px;
-            background: white;
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
             cursor: pointer;
-            transition: all 0.3s ease;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--accent1);
+            transition: .4s;
+            border-radius: 34px;
         }
 
-        .unit-btn.active {
-            background: var(--accent1);
-            border-color: var(--primary);
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--secondary);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .toggle-label {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            color: var(--text-light);
         }
 
         .input-group {
@@ -97,12 +140,24 @@
             margin: 1rem 0;
         }
 
-        input {
+        .input-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        input[type="number"] {
             padding: 1rem;
             border: 2px solid var(--accent1);
             border-radius: 8px;
             font-family: 'Space Mono', monospace;
             font-size: 1.1rem;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: var(--secondary);
+            outline: none;
         }
 
         #result {
@@ -113,11 +168,24 @@
             font-size: 1.5rem;
             text-align: center;
             margin: 1rem 0;
-            color: var(--secondary);  /* Better contrast */
+            color: var(--primary);
             font-weight: 700;
+            transition: color 0.3s ease;
         }
 
-        /* Rest of styles remain similar */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .calculator-card {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -126,191 +194,94 @@
             <h1>BMI Calculator</h1>
             <p class="tagline">BMI stands for Body Mass Index, a calculation that uses height and weight to estimate body fat and assess weight status. What's yours?</p>
             
-            <div class="unit-toggle">
-                <button class="unit-btn active" id="metricBtn">Metric (kg/cm)</button>
-                <button class="unit-btn" id="imperialBtn">Imperial (lbs/ft/in)</button>
+            <!-- Measurement Toggle -->
+            <div class="toggle-container">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="unitToggle" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="toggle-label" id="unitLabel">Imperial (lbs/ft/in)</span>
             </div>
 
-            <div id="metricInputs">
+            <!-- Imperial Inputs (Default) -->
+            <div id="imperialInputs">
+                <div class="input-group">
+                    <input type="number" id="weightLbs" placeholder="Weight (lbs)">
+                </div>
+                <div class="input-group input-row">
+                    <input type="number" id="feet" placeholder="Feet">
+                    <input type="number" id="inches" placeholder="Inches">
+                </div>
+            </div>
+
+            <!-- Metric Inputs (Hidden by Default) -->
+            <div id="metricInputs" style="display: none;">
                 <div class="input-group">
                     <input type="number" id="weight" placeholder="Weight (kg)">
                     <input type="number" id="height" placeholder="Height (cm)">
                 </div>
             </div>
 
-            <div id="imperialInputs" style="display: none;">
-                <div class="input-group">
-                    <input type="number" id="weightLbs" placeholder="Weight (lbs)">
-                </div>
-                <div class="input-group">
-                    <input type="number" id="feet" placeholder="Feet">
-                    <input type="number" id="inches" placeholder="Inches">
-                </div>
-            </div>
-
+            <!-- Result Display -->
             <div id="result"></div>
-            <canvas id="bmiChart"></canvas>
         </div>
-
-        <!-- Updated How-to Section -->
-        <section class="calculator-card">
-            <h2>How to Calculate BMI</h2>
-            <div class="how-to-steps" id="howToSteps">
-                <p>1. Enter your weight in kilograms</p>
-                <p>2. Enter your height in centimeters</p>
-                <p>3. See your BMI result instantly</p>
-            </div>
-        </section>
-
-        <!-- FAQ Section remains similar -->
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Unit Conversion Logic
-        let isMetric = true;
+        // Initialize with Imperial as default
+        const unitToggle = document.getElementById('unitToggle');
+        const unitLabel = document.getElementById('unitLabel');
         const metricInputs = document.getElementById('metricInputs');
         const imperialInputs = document.getElementById('imperialInputs');
-        const howToSteps = document.getElementById('howToSteps');
+        const resultDiv = document.getElementById('result');
 
-        document.getElementById('metricBtn').addEventListener('click', () => {
-            isMetric = true;
-            metricInputs.style.display = 'block';
-            imperialInputs.style.display = 'none';
-            document.querySelectorAll('.unit-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            updateHowToSteps();
+        // Toggle between measurement systems
+        unitToggle.addEventListener('change', () => {
+            if (unitToggle.checked) {
+                metricInputs.style.display = 'none';
+                imperialInputs.style.display = 'block';
+                unitLabel.textContent = 'Imperial (lbs/ft/in)';
+            } else {
+                metricInputs.style.display = 'block';
+                imperialInputs.style.display = 'none';
+                unitLabel.textContent = 'Metric (kg/cm)';
+            }
+            calculateBMI();
         });
-
-        document.getElementById('imperialBtn').addEventListener('click', () => {
-            isMetric = false;
-            metricInputs.style.display = 'none';
-            imperialInputs.style.display = 'block';
-            document.querySelectorAll('.unit-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            updateHowToSteps();
-        });
-
-        function updateHowToSteps() {
-            howToSteps.innerHTML = isMetric 
-                ? `<p>1. Enter your weight in kilograms</p>
-                   <p>2. Enter your height in centimeters</p>
-                   <p>3. See your BMI result instantly</p>`
-                : `<p>1. Enter your weight in pounds</p>
-                   <p>2. Enter your height in feet and inches</p>
-                   <p>3. See your BMI result instantly</p>`;
-        }
 
         // BMI Calculation Logic
-        let chart = null;
-
         function calculateBMI() {
             let weight, heightM;
             
-            if (isMetric) {
+            if (unitToggle.checked) { // Imperial
+                weight = parseFloat(document.getElementById('weightLbs').value) * 0.453592;
+                const feet = parseFloat(document.getElementById('feet').value);
+                const inches = parseFloat(document.getElementById('inches').value) || 0;
+                heightM = (feet * 0.3048) + (inches * 0.0254);
+            } else { // Metric
                 weight = parseFloat(document.getElementById('weight').value);
                 const heightCm = parseFloat(document.getElementById('height').value);
                 heightM = heightCm / 100;
-            } else {
-                weight = parseFloat(document.getElementById('weightLbs').value) * 0.453592;
-                const feet = parseFloat(document.getElementById('feet').value);
-                const inches = parseFloat(document.getElementById('inches').value);
-                heightM = (feet * 0.3048) + (inches * 0.0254);
             }
 
             if (weight && heightM) {
-                const bmi = weight / (heightM * heightM);
-                resultDiv.textContent = `BMI: ${bmi.toFixed(1)}`;
+                const bmi = weight / (heightM ** 2);
+                resultDiv.textContent = `Your BMI: ${bmi.toFixed(1)}`;
                 resultDiv.style.color = getBMIColor(bmi);
-                updateChart(bmi);
             }
         }
 
-        // BMI Calculator & Chart Logic
-    let chart = null;
-
-    function updateChart(bmi) {
-        const categories = ['Underweight', 'Normal', 'Overweight', 'Obese'];
-        const backgroundColors = [
-            getComputedStyle(document.documentElement).getPropertyValue('--accent1'),
-            getComputedStyle(document.documentElement).getPropertyValue('--success'),
-            getComputedStyle(document.documentElement).getPropertyValue('--accent2'),
-            getComputedStyle(document.documentElement).getPropertyValue('--secondary')
-        ];
-
-        // Destroy existing chart if it exists
-        if (chart) {
-            chart.destroy();
+        // Color Coding Function
+        function getBMIColor(bmi) {
+            if (bmi < 18.5) return 'var(--accent1)';
+            if (bmi < 25) return 'var(--success)';
+            if (bmi < 30) return 'var(--accent2)';
+            return 'var(--secondary)';
         }
 
-        // Create gradient background
-        const ctx = document.getElementById('bmiChart').getContext('2d');
-        const gradient = ctx.createLinearGradient(0, 0, 800, 0);
-        gradient.addColorStop(0, backgroundColors[0]);
-        gradient.addColorStop(0.25, backgroundColors[1]);
-        gradient.addColorStop(0.5, backgroundColors[2]);
-        gradient.addColorStop(1, backgroundColors[3]);
-
-        // Create new chart
-        chart = new Chart(ctx, {
-            type: 'horizontalBar',
-            data: {
-                labels: ['Your BMI', 'Underweight (<18.5)', 'Normal (18.5-24.9)', 'Overweight (25-29.9)', 'Obese (30+)'],
-                datasets: [{
-                    label: 'BMI Range',
-                    data: [bmi, 18.5, 24.9, 29.9, 40],
-                    backgroundColor: [
-                        getBMIColor(bmi), // User's BMI color
-                        backgroundColors[0],
-                        backgroundColors[1],
-                        backgroundColors[2],
-                        backgroundColors[3]
-                    ],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: { display: false },
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            fontColor: getComputedStyle(document.documentElement).getPropertyValue('--text')
-                        },
-                        gridLines: { display: false }
-                    }],
-                    yAxes: [{
-                        ticks: { fontColor: getComputedStyle(document.documentElement).getPropertyValue('--text') },
-                        barPercentage: 0.6
-                    }]
-                }
-            }
-        });
-    }
-
-    function calculateBMI() {
-        const weight = parseFloat(document.getElementById('weight').value);
-        const height = parseFloat(document.getElementById('height').value) / 100;
-        
-        if (weight && height) {
-            const bmi = weight / (height * height);
-            resultDiv.textContent = `BMI: ${bmi.toFixed(1)}`;
-            resultDiv.style.color = getBMIColor(bmi);
-            updateChart(bmi);
-        }
-    }
-
-    function getBMIColor(bmi) {
-        if (bmi < 18.5) return getComputedStyle(document.documentElement).getPropertyValue('--accent1');
-        if (bmi < 25) return getComputedStyle(document.documentElement).getPropertyValue('--success');
-        if (bmi < 30) return getComputedStyle(document.documentElement).getPropertyValue('--accent2');
-        return getComputedStyle(document.documentElement).getPropertyValue('--secondary');
-    }
-        // Initialize chart with default values
-    window.addEventListener('DOMContentLoaded', () => updateChart(0));
-    inputs.forEach(input => input.addEventListener('input', calculateBMI));
+        // Event Listeners
+        const inputs = document.querySelectorAll('input[type="number"]');
+        inputs.forEach(input => input.addEventListener('input', calculateBMI));
     </script>
 </body>
 </html>
