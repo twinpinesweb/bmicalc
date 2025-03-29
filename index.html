@@ -190,6 +190,54 @@ input[type="number"] {
             }
         }
     </style>
+    <!-- BMI Range Chart CSS -->
+    <style>
+    .bmi-scale {
+        margin-top: 2rem;
+        background: var(--background);
+        border-radius: 8px;
+        padding: 1rem;
+        position: relative;
+        height: 60px;
+    }
+
+    .scale-ranges {
+        display: flex;
+        height: 30px;
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .scale-range {
+        flex: 1;
+    }
+
+    .range-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--text-light);
+    }
+
+    .bmi-marker {
+        position: absolute;
+        top: -8px;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 12px solid var(--primary);
+        transform: translateX(-50%);
+        transition: left 0.3s ease;
+    }
+
+    .scale-range.underweight { background: var(--accent1); }
+    .scale-range.normal { background: var(--success); }
+    .scale-range.overweight { background: var(--accent2); }
+    .scale-range.obese { background: var(--secondary); }
+</style>
 </head>
 <body>
     <div class="container">
@@ -228,6 +276,24 @@ input[type="number"] {
             <!-- Result Display -->
             <div id="result"></div>
         </div>
+        
+        <!--BMI Result Range chart -->
+<div class="bmi-scale">
+    <div class="scale-ranges">
+        <div class="scale-range underweight"></div>
+        <div class="scale-range normal"></div>
+        <div class="scale-range overweight"></div>
+        <div class="scale-range obese"></div>
+        <div class="bmi-marker" id="bmiMarker"></div>
+    </div>
+    <div class="range-labels">
+        <span>&lt;18.5</span>
+        <span>18.5-24.9</span>
+        <span>25-29.9</span>
+        <span>30+</span>
+    </div>
+</div>
+        
     </div>
 
     <script>
@@ -251,7 +317,22 @@ input[type="number"] {
             }
             calculateBMI();
         });
+        <!-- Update BMI Chart -->
+    function updateChart(bmi) {
+        const marker = document.getElementById('bmiMarker');
+        const scaleWidth = document.querySelector('.scale-ranges').offsetWidth;
+        
+        // Calculate marker position (capped at 40 BMI for visualization)
+        const maxBMI = 40;
+        const position = Math.min(bmi, maxBMI) / maxBMI * 100;
+        marker.style.left = `${position}%`;
 
+        // Update active range highlight
+        document.querySelectorAll('.scale-range').forEach(range => {
+            range.style.opacity = '1'; // Reset all opacities
+        });
+    }
+        
         // BMI Calculation Logic
         function calculateBMI() {
             let weight, heightM;
@@ -281,6 +362,15 @@ input[type="number"] {
             if (bmi < 30) return 'var(--accent2)';
             return 'var(--secondary)';
         }
+           
+        // BMI Range chart result
+        if (weight && heightM) {
+            const bmi = weight / (heightM ** 2);
+            resultDiv.textContent = `Your BMI: ${bmi.toFixed(1)}`;
+            resultDiv.style.color = getBMIColor(bmi);
+            updateChart(bmi);
+        }
+    }
 
         // Event Listeners
         const inputs = document.querySelectorAll('input[type="number"]');
