@@ -135,25 +135,28 @@
         }
 
         .input-group {
-            display: grid;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
 
-        .input-row {
-            display: flex;
-            gap: 1rem;
-        }
+.input-row {
+    grid-template-columns: 1fr 1fr;
+}
 
-        input[type="number"] {
-            padding: 1rem;
-            border: 2px solid var(--accent1);
-            border-radius: 8px;
-            font-family: 'Space Mono', monospace;
-            font-size: 1.1rem;
-            width: 100%;
-            transition: border-color 0.3s ease;
-        }
+input[type="number"] {
+    padding: 1rem;
+    border: 2px solid var(--accent1);
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    transition: border-color 0.3s ease;
+}
 
         input[type="number"]:focus {
             border-color: var(--secondary);
