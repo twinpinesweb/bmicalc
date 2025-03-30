@@ -221,6 +221,68 @@ input[type="number"] {
         width: 20px;
     }
 
+    /* FAQ Styling */
+.faq-item {
+    background: var(--background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border: 2px solid var(--accent1);
+}
+
+.faq-item h3 {
+    color: var(--secondary);
+    font-family: 'Nunito', sans-serif;
+    margin-top: 0;
+}
+
+/* Chart Styling */
+.data-chart table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-family: 'Space Mono', monospace;
+}
+
+.data-chart th {
+    background: var(--primary);
+    color: white;
+    padding: 1rem;
+}
+
+.data-chart td {
+    padding: 0.8rem;
+    border-bottom: 2px solid var(--accent1);
+}
+
+/* List Styling */
+.health-lists .list-card {
+    background: var(--background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.health-lists ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.health-lists li {
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    background: white;
+    border-radius: 8px;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.health-lists li:before {
+    content: "•";
+    color: var(--secondary);
+    position: absolute;
+    left: 1rem;
+}
         @media (max-width: 768px) {
             .container {
                 padding: 0 1rem;
@@ -289,6 +351,73 @@ input[type="number"] {
 </div>
         </div>
     </div>
+<!-- Helpful Content -->
+<div class="calculator-card" style="margin-top: 2rem;">
+    <h2>BMI & Health Guide</h2>
+    
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h2>BMI Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>BMI Calculator kg vs. Pounds: What's the Difference?</h3>
+            <p>The calculation formula remains the same (weight/height²), but metric measurements (kg/m) are more accurate than imperial (lbs/in). Our calculator automatically converts measurements for accurate results.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does BMI Differ Between Males and Females?</h3>
+            <p>While BMI ranges are the same for adults, body composition differences mean:
+                <ul>
+                    <li>Women generally have 3-5% more body fat</li>
+                    <li>Muscle mass affects BMI interpretation differently</li>
+                </ul>
+            </p>
+        </div>
+
+        <!-- More FAQ Items -->
+    </div>
+
+    <!-- Data Charts -->
+    <div class="data-chart">
+        <h2>Healthy BMI Ranges by Demographic</h2>
+        
+        <div class="chart-card">
+            <h3>Ideal BMI for Women</h3>
+            <table>
+                <tr><th>Age</th><th>BMI Range</th></tr>
+                <tr><td>19-24</td><td>18.5-24.9</td></tr>
+                <tr><td>25-34</td><td>19-25</td></tr>
+                <tr><td>35-44</td><td>20-26</td></tr>
+            </table>
+        </div>
+
+        <!-- More Charts -->
+    </div>
+
+    <!-- Lists Section -->
+    <div class="health-lists">
+        <h2>Health Risks & Recommendations</h2>
+        
+        <div class="list-card">
+            <h3>Diseases Linked to High BMI</h3>
+            <ul>
+                <li>Type 2 Diabetes (7x higher risk)</li>
+                <li>Hypertension (67% prevalence)</li>
+                <li>Obstructive Sleep Apnea (45% cases)</li>
+            </ul>
+        </div>
+
+        <div class="list-card">
+            <h3>Fitness Tips for Healthy BMI</h3>
+            <ul>
+                <li>150 mins/week moderate cardio</li>
+                <li>Strength training 2x/week</li>
+                <li>NEAT (Non-Exercise Activity) boosting</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 
     <script>
         // Initialize with Imperial as default
