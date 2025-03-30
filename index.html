@@ -55,6 +55,7 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
 
         .calculator-card {
@@ -67,12 +68,27 @@
             margin: 2rem 0;
         }
 
-        h1 {
+        h1, h2, h3 {
             font-family: 'Nunito', sans-serif;
             color: var(--primary);
+            margin-top: 0;
+        }
+
+        h1 {
             margin: 0 0 0.5rem 0;
             line-height: 1.2;
             font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
         }
 
         .tagline {
@@ -142,28 +158,28 @@
         }
 
         .input-group {
-    display: grid;
-    gap: 1rem;
-    margin: 1rem 0;
-    grid-template-columns: 1fr;
-    width: 100%;
-}
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+            grid-template-columns: 1fr;
+            width: 100%;
+        }
 
-.input-row {
-    grid-template-columns: 1fr 1fr;
-}
+        .input-row {
+            grid-template-columns: 1fr 1fr;
+        }
 
-input[type="number"] {
-    padding: 1rem;
-    border: 2px solid var(--accent1);
-    border-radius: 8px;
-    font-family: 'Space Mono', monospace;
-    font-size: 1.1rem;
-    width: 100%;
-    box-sizing: border-box;
-    max-width: 100%;
-    transition: border-color 0.3s ease;
-}
+        input[type="number"] {
+            padding: 1rem;
+            border: 2px solid var(--accent1);
+            border-radius: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            width: 100%;
+            box-sizing: border-box;
+            max-width: 100%;
+            transition: border-color 0.3s ease;
+        }
 
         input[type="number"]:focus {
             border-color: var(--secondary);
@@ -184,118 +200,140 @@ input[type="number"] {
         }
 
         #message {
-        padding: 1rem;
-        border-radius: 8px;
-        margin-top: 1rem;
-        font-family: 'Nunito', sans-serif;
-        font-weight: 600;
-        text-align: center;
-        transition: all 0.3s ease;
-        color: var(--message-text);
-    }
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: var(--message-text);
+        }
 
         .share-section {
-        margin-top: 1.5rem;
-        text-align: center;
-        display: none;
-    }
+            margin-top: 1.5rem;
+            text-align: center;
+            display: none;
+        }
 
-    .share-button {
-        background: none;
-        border: 2px solid var(--primary);
-        border-radius: 8px;
-        padding: 0.5rem 1rem;
-        margin: 0 0.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
+        .share-button {
+            background: none;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .share-button:hover {
-        background: var(--primary);
-        color: white;
-    }
+        .share-button:hover {
+            background: var(--primary);
+            color: white;
+        }
 
-    .share-button img {
-        height: 20px;
-        width: 20px;
-    }
+        /* FAQ Styling */
+        .faq-item {
+            background: var(--background);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 2px solid var(--accent1);
+        }
 
-    /* FAQ Styling */
-.faq-item {
-    background: var(--background);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1rem 0;
-    border: 2px solid var(--accent1);
-}
+        /* Chart Styling */
+        .data-chart {
+            margin: 2rem 0;
+        }
 
-.faq-item h3 {
-    color: var(--secondary);
-    font-family: 'Nunito', sans-serif;
-    margin-top: 0;
-}
+        .chart-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
 
-/* Chart Styling */
-.data-chart table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1rem 0;
-    font-family: 'Space Mono', monospace;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-family: 'Space Mono', monospace;
+        }
 
-.data-chart th {
-    background: var(--primary);
-    color: white;
-    padding: 1rem;
-}
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
 
-.data-chart td {
-    padding: 0.8rem;
-    border-bottom: 2px solid var(--accent1);
-}
+        td {
+            padding: 0.8rem;
+            border-bottom: 2px solid var(--accent1);
+        }
 
-/* List Styling */
-.health-lists .list-card {
-    background: var(--background);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-}
+        /* List Styling */
+        .health-lists {
+            margin: 2rem 0;
+        }
 
-.health-lists ul {
-    list-style-type: none;
-    padding-left: 0;
-}
+        .list-card {
+            background: var(--background);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
 
-.health-lists li {
-    padding: 0.8rem;
-    margin: 0.5rem 0;
-    background: white;
-    border-radius: 8px;
-    position: relative;
-    padding-left: 2rem;
-}
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
 
-.health-lists li:before {
-    content: "•";
-    color: var(--secondary);
-    position: absolute;
-    left: 1rem;
-}
+        li {
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        li:before {
+            content: "•";
+            color: var(--secondary);
+            position: absolute;
+            left: 1rem;
+            top: 0.8rem;
+        }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
             .calculator-card {
-                padding: 1rem;
+                padding: 1.5rem;
             }
             
             h1 {
                 font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .share-button {
+                margin: 0.5rem;
+                width: 100%;
             }
         }
     </style>
@@ -338,88 +376,131 @@ input[type="number"] {
             <div id="result"></div>
             <div id="message"></div>
             <div class="share-section" id="shareSection">
-    <button class="share-button" id="shareX">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-    </svg>
-    X
-</button>
-    <button class="share-button" id="shareFacebook">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-            </svg>
-        Facebook
-    </button>
-</div>
+                <button class="share-button" id="shareX">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    X
+                </button>
+                <button class="share-button" id="shareFacebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                    </svg>
+                    Facebook
+                </button>
+            </div>
+        </div>
+
+        <!-- Helpful Content -->
+        <div class="calculator-card" style="margin-top: 2rem;">
+            <h2>BMI & Health Guide</h2>
+            
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>BMI Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <h3>BMI Calculator kg vs. Pounds: What's the Difference?</h3>
+                    <p>The calculation formula remains the same (weight/height²), but metric measurements (kg/m) are more accurate than imperial (lbs/in). Our calculator automatically converts measurements for accurate results.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Does BMI Differ Between Males and Females?</h3>
+                    <p>While BMI ranges are the same for adults, body composition differences mean:</p>
+                    <ul>
+                        <li>Women generally have 3-5% more body fat</li>
+                        <li>Muscle mass affects BMI interpretation differently</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How Does BMI Change With Age?</h3>
+                    <p>BMI interpretation varies by age:
+                        <ul>
+                            <li>Children/teens use age/gender percentiles</li>
+                            <li>Adults 19-65 use standard ranges</li>
+                            <li>Seniors may have slightly higher healthy ranges</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Data Charts -->
+            <div class="data-chart">
+                <h2>Healthy BMI Ranges by Demographic</h2>
+                
+                <div class="chart-card">
+                    <h3>Ideal BMI for Women</h3>
+                    <table>
+                        <tr><th>Age</th><th>BMI Range</th></tr>
+                        <tr><td>19-24</td><td>18.5-24.9</td></tr>
+                        <tr><td>25-34</td><td>19-25</td></tr>
+                        <tr><td>35-44</td><td>20-26</td></tr>
+                        <tr><td>45-54</td><td>21-27</td></tr>
+                        <tr><td>55+</td><td>22-28</td></tr>
+                    </table>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Ideal BMI for Men</h3>
+                    <table>
+                        <tr><th>Age</th><th>BMI Range</th></tr>
+                        <tr><td>19-24</td><td>18.5-24.9</td></tr>
+                        <tr><td>25-34</td><td>19-25</td></tr>
+                        <tr><td>35-44</td><td>20-26</td></tr>
+                        <tr><td>45-54</td><td>21-27</td></tr>
+                        <tr><td>55+</td><td>22-28</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Lists Section -->
+            <div class="health-lists">
+                <h2>Health Risks & Recommendations</h2>
+                
+                <div class="list-card">
+                    <h3>Diseases Linked to High BMI</h3>
+                    <ul>
+                        <li>Type 2 Diabetes (7x higher risk)</li>
+                        <li>Hypertension (67% prevalence)</li>
+                        <li>Obstructive Sleep Apnea (45% cases)</li>
+                        <li>Cardiovascular Disease (2x risk)</li>
+                        <li>Certain Cancers (breast, colon, kidney)</li>
+                    </ul>
+                </div>
+
+                <div class="list-card">
+                    <h3>Diseases Associated With Low BMI</h3>
+                    <ul>
+                        <li>Osteoporosis (reduced bone density)</li>
+                        <li>Anemia (nutritional deficiencies)</li>
+                        <li>Weakened Immune Function</li>
+                        <li>Fertility Issues (in women)</li>
+                    </ul>
+                </div>
+
+                <div class="list-card">
+                    <h3>Fitness Tips for Healthy BMI</h3>
+                    <ul>
+                        <li>150 mins/week moderate cardio</li>
+                        <li>Strength training 2x/week</li>
+                        <li>NEAT (Non-Exercise Activity) boosting</li>
+                        <li>Flexibility/mobility work</li>
+                    </ul>
+                </div>
+
+                <div class="list-card">
+                    <h3>Nutrition Tips</h3>
+                    <ul>
+                        <li>Prioritize whole, unprocessed foods</li>
+                        <li>Balance macronutrients (carbs, protein, fats)</li>
+                        <li>Stay hydrated (water > sugary drinks)</li>
+                        <li>Practice mindful eating</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-<!-- Helpful Content -->
-<div class="calculator-card" style="margin-top: 2rem;">
-    <h2>BMI & Health Guide</h2>
-    
-    <!-- FAQ Section -->
-    <div class="faq-section">
-        <h2>BMI Frequently Asked Questions</h2>
-
-        <div class="faq-item">
-            <h3>BMI Calculator kg vs. Pounds: What's the Difference?</h3>
-            <p>The calculation formula remains the same (weight/height²), but metric measurements (kg/m) are more accurate than imperial (lbs/in). Our calculator automatically converts measurements for accurate results.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>Does BMI Differ Between Males and Females?</h3>
-            <p>While BMI ranges are the same for adults, body composition differences mean:
-                <ul>
-                    <li>Women generally have 3-5% more body fat</li>
-                    <li>Muscle mass affects BMI interpretation differently</li>
-                </ul>
-            </p>
-        </div>
-
-        <!-- More FAQ Items -->
-    </div>
-
-    <!-- Data Charts -->
-    <div class="data-chart">
-        <h2>Healthy BMI Ranges by Demographic</h2>
-        
-        <div class="chart-card">
-            <h3>Ideal BMI for Women</h3>
-            <table>
-                <tr><th>Age</th><th>BMI Range</th></tr>
-                <tr><td>19-24</td><td>18.5-24.9</td></tr>
-                <tr><td>25-34</td><td>19-25</td></tr>
-                <tr><td>35-44</td><td>20-26</td></tr>
-            </table>
-        </div>
-
-        <!-- More Charts -->
-    </div>
-
-    <!-- Lists Section -->
-    <div class="health-lists">
-        <h2>Health Risks & Recommendations</h2>
-        
-        <div class="list-card">
-            <h3>Diseases Linked to High BMI</h3>
-            <ul>
-                <li>Type 2 Diabetes (7x higher risk)</li>
-                <li>Hypertension (67% prevalence)</li>
-                <li>Obstructive Sleep Apnea (45% cases)</li>
-            </ul>
-        </div>
-
-        <div class="list-card">
-            <h3>Fitness Tips for Healthy BMI</h3>
-            <ul>
-                <li>150 mins/week moderate cardio</li>
-                <li>Strength training 2x/week</li>
-                <li>NEAT (Non-Exercise Activity) boosting</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
 
     <script>
         // Initialize with Imperial as default
@@ -463,77 +544,70 @@ input[type="number"] {
             if (weight && heightM) {
                 const bmi = weight / (heightM ** 2);
                 resultDiv.textContent = `Your BMI: ${bmi.toFixed(1)}`;
-                resultDiv.style.color = getBMIColor(bmi);
+                const bgColor = getBMIColor(bmi);
+                resultDiv.style.color = bgColor;
+                messageDiv.textContent = getMessage(bmi);
+                messageDiv.style.backgroundColor = bgColor;
+                shareSection.style.display = 'block';
+                setupShareButtons(bmi);
+            } else {
+                shareSection.style.display = 'none';
             }
-            
-             if (weight && heightM) {
-            const bmi = weight / (heightM ** 2);
-            resultDiv.textContent = `Your BMI: ${bmi.toFixed(1)}`;
-            const bgColor = getBMIColor(bmi);
-            resultDiv.style.color = bgColor;
-            messageDiv.textContent = getMessage(bmi);
-            messageDiv.style.backgroundColor = bgColor;
-            shareSection.style.display = 'block';
-            setupShareButtons(bmi);
-        } else {
-            shareSection.style.display = 'none';
-        }
         }
 
-
-       // Color Coding and Messaging Function
-    function getBMIColor(bmi) {
-        if (bmi < 18.5) {
-            document.documentElement.style.setProperty('--message-text', '#2E4057'); 
-            return 'var(--accent1)';
-        }
-        if (bmi < 25) {
+        // Color Coding and Messaging Function
+        function getBMIColor(bmi) {
+            if (bmi < 18.5) {
+                document.documentElement.style.setProperty('--message-text', '#2E4057'); 
+                return 'var(--accent1)';
+            }
+            if (bmi < 25) {
+                document.documentElement.style.setProperty('--message-text', '#ffffff');
+                return 'var(--success)';
+            }
+            if (bmi < 30) {
+                document.documentElement.style.setProperty('--message-text', '#2E4057');
+                return 'var(--accent2)';
+            }
             document.documentElement.style.setProperty('--message-text', '#ffffff');
-            return 'var(--success)';
+            return 'var(--secondary)';
         }
-        if (bmi < 30) {
-            document.documentElement.style.setProperty('--message-text', '#2E4057');
-            return 'var(--accent2)';
-        }
-        document.documentElement.style.setProperty('--message-text', '#ffffff');
-        return 'var(--secondary)';
-    }
 
-    function getMessage(bmi) {
-        if (bmi < 18.5) return "Nourish your body, strength will follow 🥑💪";
-        if (bmi < 25) return "Keep thriving —health is more than a number 🌿😊";
-        if (bmi < 30) return "Small steps, big progress —keep moving forward 🏃‍♀️🍏";
-        return "Your health matters! Start sustainable habits today 🌱💛";
+        function getMessage(bmi) {
+            if (bmi < 18.5) return "Nourish your body, strength will follow 🥑💪";
+            if (bmi < 25) return "Keep thriving —health is more than a number 🌿😊";
+            if (bmi < 30) return "Small steps, big progress —keep moving forward 🏃‍♀️🍏";
+            return "Your health matters! Start sustainable habits today 🌱💛";
         }
 
         // Social Share Function
-    function setupShareButtons(bmi) {
-        const shareText = `My BMI is ${bmi.toFixed(1)} - Let's focus on health together! 🌱`;
-        const encodedText = encodeURIComponent(shareText);
-        const currentUrl = encodeURIComponent(window.location.href);
+        function setupShareButtons(bmi) {
+            const shareText = `My BMI is ${bmi.toFixed(1)} - Let's focus on health together! 🌱`;
+            const encodedText = encodeURIComponent(shareText);
+            const currentUrl = encodeURIComponent(window.location.href);
 
-        // X Share
-        document.getElementById('shareX').onclick = () => {
-            window.open(
-                `https://x.com/intent/tweet?text=${encodedText}&url=${currentUrl}&hashtags=BMI,HealthAwareness`,
-                '_blank',
-                'width=600,height=400'
-            );
-        };
+            // X Share
+            document.getElementById('shareX').onclick = () => {
+                window.open(
+                    `https://x.com/intent/tweet?text=${encodedText}&url=${currentUrl}&hashtags=BMI,HealthAwareness`,
+                    '_blank',
+                    'width=600,height=400'
+                );
+            };
 
-        // Facebook Share
-        document.getElementById('shareFacebook').onclick = () => {
-            window.open(
-                `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}&quote=${encodedText}`,
-                '_blank',
-                'width=600,height=400'
-            );
-        };
-    }
+            // Facebook Share
+            document.getElementById('shareFacebook').onclick = () => {
+                window.open(
+                    `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}&quote=${encodedText}`,
+                    '_blank',
+                    'width=600,height=400'
+                );
+            };
+        }
+
         // Event Listeners
         const inputs = document.querySelectorAll('input[type="number"]');
         inputs.forEach(input => input.addEventListener('input', calculateBMI));
     </script>
-    
 </body>
 </html>
