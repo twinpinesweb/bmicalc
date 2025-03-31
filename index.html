@@ -99,6 +99,8 @@
             --text-light: #6B7C93; /* Gray text */
             --success: #7BC67B;    /* Green */
             --message-text: #2E4057;
+            --link-color: #1A6FEF;         /* Accessible blue */
+            --link-hover: var(--secondary);/* Coral for hover */
         }
         
         body {
@@ -158,6 +160,21 @@
             font-size: 1.1rem;
             line-height: 1.5;
         }
+        a {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-decoration-color: var(--accent1);
+    transition: all 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: var(--link-hover);
+    text-decoration-color: currentColor;
+}
+
+a:visited {
+    color: #5E35B1;                /* Accessible purple */
+}
 
         /* Modern Toggle Switch */
         .toggle-container {
@@ -388,7 +405,7 @@
 <body>
     <div class="container">
         <div class="calculator-card">
-            <h1>BMI Calculator</h1>
+            <h1>BMI Calculator | Check Your Body Mass Index</h1>
             <p class="tagline">BMI stands for Body Mass Index, a calculation that uses height and weight to estimate body fat and assess weight status. What's yours?</p>
             
             <!-- Measurement Toggle -->
@@ -438,7 +455,7 @@
             </div>
         </div>
 
-        <!-- Helpful Content -->
+        <!-- Content -->
         <div class="calculator-card" style="margin-top: 2rem;">
             <h2>BMI & Health Guide</h2>
             
