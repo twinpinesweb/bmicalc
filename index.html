@@ -14,20 +14,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Open+Sans&family=Space+Mono&display=swap" rel="stylesheet">
     
     <!-- Schema Markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [{
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
             "@type": "Question",
             "name": "What is a healthy BMI range?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "A healthy BMI ranges from 18.5 to 24.9. However, BMI has limitations and should be interpreted alongside other health indicators."
+                "text": "A healthy BMI ranges from 18.5 to 24.9. However, BMI has limitations and should be interpreted alongside other health indicators like waist circumference and body composition. The World Health Organization emphasizes BMI as a population-level screening tool rather than individual diagnostic measure."
             }
-        }]
-    }
-    </script>
+        },
+        {
+            "@type": "Question",
+            "name": "Does BMI Differ Between Males and Females?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "While BMI ranges are standardized, biological differences impact interpretation. Women typically have 3-5% more essential body fat, while men generally have greater muscle mass. Clinical assessments should consider additional metrics like waist-to-hip ratio for accurate health evaluations according to NIH guidelines."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How Does BMI Change With Age?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "BMI interpretation evolves across lifespan. Children use growth percentiles, adults follow standard categories, while seniors may have adjusted ranges due to muscle loss. The CDC provides age-specific growth charts, and geriatric studies suggest slightly higher BMI ranges may be beneficial for elderly individuals."
+            }
+        }
+    ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BMI Calculator | Health Tracker",
+    "url": "https://twinpinesweb.github.io/bmicalc/",
+    "description": "Comprehensive BMI calculator with health recommendations and scientific resources",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Twin Pines Web",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://twinpinesweb.github.io/logo.png"
+        }
+    },
+    "sameAs": [
+        "https://twitter.com/HealthTracker",
+        "https://www.facebook.com/HealthTrackerTool"
+    ]
+}
+</script>
 
     <style>
         html {
@@ -399,24 +444,33 @@
                 </div>
 
                 <div class="faq-item">
-                    <h3>Does BMI Differ Between Males and Females?</h3>
-                    <p>While BMI ranges are the same for adults, body composition differences mean:</p>
-                    <ul>
-                        <li>Women generally have 3-5% more body fat</li>
-                        <li>Muscle mass affects BMI interpretation differently</li>
-                    </ul>
-                </div>
+    <h3>Does BMI Differ Between Males and Females?</h3>
+    <p>While BMI ranges are the same for adults, body composition differences mean:</p>
+    <ul>
+        <li>Women generally have 3-5% more body fat even at same BMI<br>
+        <em>Explanation:</em> Biological needs for childbearing mean women naturally store more essential fat. The American Council on Exercise notes this difference doesn't account for BMI classification changes, but affects health risk interpretation. <a href="https://www.acefitness.org/resources/everyone/blog/112/what-are-the-guidelines-for-percentage-of-body-fat-loss/" target="_blank" rel="noopener">(ACE Fitness Guidelines)</a></li>
+        
+        <li>Muscle mass affects BMI interpretation differently<br>
+        <em>Detail:</em> Men typically have greater muscle density, which can push BMI into "overweight" range despite low body fat. A Journal of Sports Sciences study found 50% of male athletes are misclassified as overweight by BMI alone. <a href="https://www.tandfonline.com/doi/abs/10.1080/02640410500128028" target="_blank" rel="noopener">(Study Reference)</a></li>
+    </ul>
+    <p>Clinical evaluation should consider waist-to-hip ratio and body composition analysis for accurate health assessments. The National Institutes of Health recommends BMI as screening tool but not diagnostic measure. <a href="https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm" target="_blank" rel="noopener">(NIH Guidelines)</a></p>
+</div>
 
-                <div class="faq-item">
-                    <h3>How Does BMI Change With Age?</h3>
-                    <p>BMI interpretation varies by age:
-                        <ul>
-                            <li>Children/teens use age/gender percentiles</li>
-                            <li>Adults 19-65 use standard ranges</li>
-                            <li>Seniors may have slightly higher healthy ranges</li>
-                        </ul>
-                    </p>
-                </div>
+<div class="faq-item">
+    <h3>How Does BMI Change With Age?</h3>
+    <p>BMI interpretation varies by age:</p>
+    <ul>
+        <li>Children/teens use age/gender percentiles<br>
+        <em>CDC Growth Charts:</em> Pediatric BMI accounts for normal growth patterns using percentiles. A child at 85th percentile is considered overweight. <a href="https://www.cdc.gov/healthyweight/assessing/bmi/childrens_bmi/about_childrens_bmi.html" target="_blank" rel="noopener">(CDC Growth Charts)</a></li>
+        
+        <li>Adults 19-65 use standard ranges<br>
+        <em>Consistency:</em> WHO maintains universal categories as metabolism stabilizes</li>
+        
+        <li>Seniors may have slightly higher healthy ranges<br>
+        <em>Research:</em> Journals of Gerontology suggest 24-29 may be optimal for over 65s due to muscle loss prevention. However, waist circumference becomes more crucial indicator. <a href="https://academic.oup.com/geronj/article/56/3/M146/592539" target="_blank" rel="noopener">(Gerontology Study)</a></li>
+    </ul>
+    <p>Body composition shifts (sarcopenia in elderly, growth spurts in youth) necessitate different interpretations. Always consult healthcare providers for age-specific recommendations.</p>
+</div>
             </div>
 
             <!-- Data Charts -->
