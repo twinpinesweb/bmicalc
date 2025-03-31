@@ -30,6 +30,12 @@
     </script>
 
     <style>
+        html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
         :root {
             --primary: #2E4057;    /* Dark blue */
             --secondary: #FF7F5D;  /* Coral */
@@ -41,14 +47,15 @@
             --success: #7BC67B;    /* Green */
             --message-text: #2E4057;
         }
-
+        
         body {
             font-family: 'Open Sans', sans-serif;
             background: linear-gradient(160deg, var(--background) 0%, #E6E9F4 100%);
             color: var(--text);
             line-height: 1.6;
             margin: 0;
-            padding: 0px;
+            padding: 20px;
+            box-sizing: border-box;
             min-height: 100vh;
         }
 
@@ -56,6 +63,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 0 1rem;
+            box-sizing: border-box;
         }
 
         .calculator-card {
