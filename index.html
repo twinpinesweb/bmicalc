@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI Calculator | Check Your Body Mass Index</title>
-    <meta name="description" content="Calculate your Body Mass Index (BMI) using imperial or metric measurements. Understand your weight status with instant results.">
-    <meta property="og:title" content="My BMI Result - Health Tracker">
+    <meta name="description" content="Calculate your Body Mass Index (BMI) using imperial or metric measurements. Understand your weight status with instant results and a motivational message.">
+    <meta property="og:title" content="My BMI Result - Health Awareness">
     <meta property="og:description" content="Check out my BMI result and join me in focusing on health!">
-    <meta property="og:url" content="https://twinpinesweb.github.io/bmicalc/">
+    <meta property="og:url" content="https://bmi-calculator.ca">
     <meta property="og:hashtags" content="#BMI,#HealthAwareness">
     
     <!-- Google Fonts -->
@@ -57,28 +57,61 @@
 
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "BMI Calculator | Health Tracker",
-    "url": "https://twinpinesweb.github.io/bmicalc/",
-    "description": "Comprehensive BMI calculator with health recommendations and scientific resources",
-    "potentialAction": {
-        "@type": "SearchAction",
-        "target": "{search_term_string}",
-        "query-input": "required name=search_term_string"
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BMI Calculator | Health Awareness",
+  "url": "https://bmi-calculator.ca",
+  "description": "Calculate your BMI instantly with weight and height inputs. Get health tips and scientific insights.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "screenshot": "https://bmi-calculator.ca/screenshot.png" // Optional but useful
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Calculate BMI",
+  "description": "Step-by-step guide to calculate your BMI using our tool.",
+  "totalTime": "PT2M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "text": "Enter your weight in pounds or kilograms."
     },
-    "publisher": {
-        "@type": "Organization",
-        "name": "Twin Pines Web",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "https://twinpinesweb.github.io/logo.png"
-        }
+    {
+      "@type": "HowToStep",
+      "text": "Enter your height in feet/inches or centimeters."
     },
-    "sameAs": [
-        "https://twitter.com/HealthTracker",
-        "https://www.facebook.com/HealthTrackerTool"
-    ]
+    {
+      "@type": "HowToStep",
+      "text": "Instantly see your BMI result along with a motivational message."
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "BMI Calculator | Health Awareness",
+  "url": "https://bmi-calculator.ca",
+  "description": "Easy BMI calculator with motivation, health tips, and scientific resources",
+  "publisher": {
+    "@type": "Organization",
+    "name": "BMI Calculator",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bmi-calculator.ca/logo.png"
+    }
+  }
 }
 </script>
 
