@@ -199,6 +199,16 @@ a:visited {
             height: 0;
         }
 
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
         .toggle-slider {
             position: absolute;
             cursor: pointer;
@@ -412,8 +422,9 @@ a:visited {
             
             <!-- Measurement Toggle -->
             <div class="toggle-container">
-                <label class="toggle-switch">
+                <label class="toggle-switch" for="unitToggle>
                      <input type="checkbox" id="unitToggle" checked>
+                    <span class="visually-hidden">Toggle measurement units</span>
                     <span class="toggle-slider"></span>
                 </label>
                 <span class="toggle-label" id="unitLabel">Imperial (lbs/ft/in)</span>
