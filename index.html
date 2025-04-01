@@ -32,7 +32,7 @@
             "name": "What is a healthy BMI range?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "A healthy BMI ranges from 18.5 to 24.9 according to WHO standards. However, this should be interpreted alongside waist circumference and ethnic considerations - for example, Asian populations have increased health risks at lower BMIs. The NIH recommends using BMI as a screening tool rather than diagnostic measure."
+                "text": "A healthy BMI ranges from 18.5 to 24.9 according to WHO standards. However, this should be interpreted alongside waist circumference and ethnic considerations - for example, Asian populations have increased health risks at lower BMIs. The NIH recommends using BMI as a screening tool rather than a diagnostic measure."
             }
         },
         {
@@ -199,16 +199,6 @@ a:visited {
             height: 0;
         }
 
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-    }
         .toggle-slider {
             position: absolute;
             cursor: pointer;
@@ -422,9 +412,12 @@ a:visited {
             
             <!-- Measurement Toggle -->
             <div class="toggle-container">
-                <label class="toggle-switch" for="unitToggle>
-                     <input type="checkbox" id="unitToggle" checked>
-                    <span class="visually-hidden">Toggle measurement units</span>
+                <label class="toggle-switch">
+                     <input 
+                        type="checkbox" 
+                        id="unitToggle" 
+                        checked 
+                        aria-label="Toggle between metric and imperial units">
                     <span class="toggle-slider"></span>
                 </label>
                 <span class="toggle-label" id="unitLabel">Imperial (lbs/ft/in)</span>
