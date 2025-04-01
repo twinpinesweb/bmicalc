@@ -530,7 +530,12 @@ a:visited {
     height: 28px;
     font-size: 1rem;
   }
+       .site-footer {
+            padding: 1rem 0;
+            font-size: 0.9rem;
+        }     
         }
+    
     </style>
 </head>
 <body>
@@ -848,5 +853,39 @@ a:visited {
         const inputs = document.querySelectorAll('input[type="number"]');
         inputs.forEach(input => input.addEventListener('input', calculateBMI));
     </script>
+
+    <footer class="site-footer">
+    <p>
+        © Twin Pines Media | 
+        <a href="https://bmi-calculator.ca/terms-and-privacy-policy.html" 
+           rel="nofollow" 
+           class="footer-link">
+            Terms and Privacy Policy
+        </a>
+    </p>
+</footer>
+
+<style>
+    .site-footer {
+        text-align: center;
+        padding: 1.5rem 0;
+        margin: 2rem 0 1rem;
+        color: var(--text-light);
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .footer-link {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        border-bottom: 1px solid var(--accent1);
+    }
+
+    .footer-link:hover {
+        color: var(--secondary);
+        border-bottom-color: var(--secondary);
+    }
+    }
+</style>
 </body>
 </html>
